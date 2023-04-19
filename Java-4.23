@@ -1,0 +1,96 @@
+public class Main{
+    public static void main(String[] args){
+        System.out.println("1,B  2,B  3,A  4,B  5,D");
+        System.out.println("----------");
+        showTriangle(4);
+        System.out.println("----------");
+        reverseString("123456");
+        System.out.println("----------");
+        isPalindrome(155648498);
+        System.out.println("----------");
+        ShuiXianHua();
+        System.out.print('\n');
+        System.out.println("----------");
+        arraysDemo();
+    }
+
+    public static void showTriangle(int n){
+        int[][] nums = new int[n][2 * n - 1];
+        for(int i = 0;i < n;i++){
+            for(int j = i;j < n;j++){
+                nums[j][n - i - 1] = 1;
+                nums[j][n + i - 1] = 1;
+            }
+        }
+
+        for(int i = 0;i < n;i++){
+            for(int j = 0;j < 2 * n - 1;j++){
+                if(nums[i][j] == 1){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+
+    public static void reverseString(String s){
+        char[] chars = s.toCharArray();
+        char[] temp = new char[chars.length];
+
+        for(int i = 0,j = chars.length - 1;j >= 0;i++,j--){
+            temp[i] = chars[j];
+        }
+
+        String s1 = String.valueOf(temp);
+        System.out.println(s1);
+    }
+
+    public static void isPalindrome(int num){
+        boolean flag = true;
+
+        String s = num + "";
+        char[] chars = s.toCharArray();
+
+        for(int i = 0,j = chars.length - 1;j >= 0;i++,j--){
+            if(chars[i] != chars[j]){
+                flag = false;
+            }
+        }
+
+        System.out.println(flag);
+    }
+
+    public static void ShuiXianHua(){
+        for(int i = 100;i < 1000;i++){
+            int sum = 0;
+            
+            String s = i + "";
+            char[] chars = s.toCharArray();
+            for(char c : chars){
+                int j = c - 48;
+                sum += j * j * j;
+            }
+            if(sum == i) System.out.print(sum + " ");
+        }
+    }
+
+    public static void arraysDemo(){
+        int[] nums = {10,5,1,2,6,4,6,5,6,6};
+
+        int max = nums[0];
+        int min = nums[0];
+
+        for(int i : nums){
+            if(i < min){
+                min = i;
+            }else if(i > max){
+                max = i;
+            }
+        }
+
+        System.out.print("max = " + max + " min = " + min);
+
+    }
+}
